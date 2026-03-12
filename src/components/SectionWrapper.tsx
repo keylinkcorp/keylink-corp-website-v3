@@ -11,8 +11,8 @@ interface SectionWrapperProps {
 
 const createFadeVariants = (delay: number): Variants => ({
   hidden: { opacity: 0, y: 30 },
-  visible: { 
-    opacity: 1, 
+  visible: {
+    opacity: 1,
     y: 0,
     transition: {
       duration: 0.7,
@@ -22,15 +22,15 @@ const createFadeVariants = (delay: number): Variants => ({
   }
 });
 
-export function SectionWrapper({ 
-  children, 
+export function SectionWrapper({
+  children,
   className = "",
   delay = 0,
   stagger = false
 }: SectionWrapperProps) {
   const ref = useRef<HTMLDivElement>(null);
-  const isInView = useInView(ref, { 
-    once: true, 
+  const isInView = useInView(ref, {
+    once: true,
     margin: "-100px",
     amount: 0.1
   });
@@ -50,19 +50,15 @@ export function SectionWrapper({
   );
 }
 
-// Wrapper for individual items in staggered animations
-export function StaggerItem({ 
-  children, 
-  className = "" 
-}: { 
-  children: React.ReactNode; 
+export function StaggerItem({
+  children,
+  className = ""
+}: {
+  children: React.ReactNode;
   className?: string;
 }) {
   return (
-    <motion.div
-      variants={fadeInUp}
-      className={className}
-    >
+    <motion.div variants={fadeInUp} className={className}>
       {children}
     </motion.div>
   );

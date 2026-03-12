@@ -4,7 +4,7 @@ import { MessageCircle, X } from "lucide-react";
 
 export function FloatingWhatsApp() {
   const [isOpen, setIsOpen] = useState(false);
-  const whatsappNumber = "+97317000000"; // Replace with actual number
+  const whatsappNumber = "+97317000000";
   const defaultMessage = "Hello! I'm interested in company formation services in Bahrain.";
 
   const handleWhatsAppClick = () => {
@@ -23,7 +23,6 @@ export function FloatingWhatsApp() {
             transition={{ duration: 0.2 }}
             className="absolute bottom-20 right-0 w-72 bg-white rounded-2xl shadow-md border border-border overflow-hidden"
           >
-            {/* Header */}
             <div className="bg-[#25D366] p-4">
               <div className="flex items-center gap-3">
                 <div className="w-10 h-10 bg-white/20 rounded-full flex items-center justify-center">
@@ -35,8 +34,6 @@ export function FloatingWhatsApp() {
                 </div>
               </div>
             </div>
-
-            {/* Message area */}
             <div className="p-4 bg-[#E5DDD5]">
               <div className="bg-white p-3 rounded-lg shadow-sm max-w-[85%]">
                 <p className="text-sm text-gray-700">
@@ -45,8 +42,6 @@ export function FloatingWhatsApp() {
                 <p className="text-[10px] text-gray-400 text-right mt-1">Just now</p>
               </div>
             </div>
-
-            {/* CTA */}
             <div className="p-4 bg-white">
               <button
                 onClick={handleWhatsAppClick}
@@ -60,7 +55,6 @@ export function FloatingWhatsApp() {
         )}
       </AnimatePresence>
 
-      {/* Floating button */}
       <motion.button
         onClick={() => setIsOpen(!isOpen)}
         className="relative w-14 h-14 bg-[#25D366] hover:bg-[#20BD5A] rounded-full shadow-sm flex items-center justify-center transition-colors"
@@ -69,39 +63,21 @@ export function FloatingWhatsApp() {
       >
         <AnimatePresence mode="wait">
           {isOpen ? (
-            <motion.div
-              key="close"
-              initial={{ rotate: -90, opacity: 0 }}
-              animate={{ rotate: 0, opacity: 1 }}
-              exit={{ rotate: 90, opacity: 0 }}
-              transition={{ duration: 0.2 }}
-            >
+            <motion.div key="close" initial={{ rotate: -90, opacity: 0 }} animate={{ rotate: 0, opacity: 1 }} exit={{ rotate: 90, opacity: 0 }} transition={{ duration: 0.2 }}>
               <X className="w-6 h-6 text-white" />
             </motion.div>
           ) : (
-            <motion.div
-              key="open"
-              initial={{ rotate: 90, opacity: 0 }}
-              animate={{ rotate: 0, opacity: 1 }}
-              exit={{ rotate: -90, opacity: 0 }}
-              transition={{ duration: 0.2 }}
-            >
+            <motion.div key="open" initial={{ rotate: 90, opacity: 0 }} animate={{ rotate: 0, opacity: 1 }} exit={{ rotate: -90, opacity: 0 }} transition={{ duration: 0.2 }}>
               <MessageCircle className="w-6 h-6 text-white" />
             </motion.div>
           )}
         </AnimatePresence>
-
-        {/* Pulse animation */}
         {!isOpen && (
           <motion.span
             className="absolute inset-0 rounded-full bg-[#25D366]"
             initial={{ scale: 1, opacity: 0.5 }}
             animate={{ scale: 1.5, opacity: 0 }}
-            transition={{
-              duration: 1.5,
-              repeat: Infinity,
-              repeatType: "loop"
-            }}
+            transition={{ duration: 1.5, repeat: Infinity, repeatType: "loop" }}
           />
         )}
       </motion.button>

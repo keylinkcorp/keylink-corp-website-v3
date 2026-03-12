@@ -13,8 +13,6 @@ import {
 } from "@/components/ui/navigation-menu";
 import { cn } from "@/lib/utils";
 
-
-// Mega menu structure - 4 main pillars
 const megaMenuItems = [
   {
     title: "Launch Business",
@@ -126,7 +124,6 @@ const megaMenuItems = [
   },
 ];
 
-// About dropdown with icons
 const aboutDropdown = {
   title: "About",
   sections: [
@@ -153,7 +150,6 @@ export function Header() {
   const [openSubmenu, setOpenSubmenu] = useState<string | null>(null);
   const [scrolled, setScrolled] = useState(false);
 
-  // Handle scroll for sticky header effect
   useEffect(() => {
     const handleScroll = () => {
       setScrolled(window.scrollY > 20);
@@ -165,11 +161,8 @@ export function Header() {
   return (
     <header className={cn(
       "sticky top-0 z-50 w-full transition-all duration-200",
-      scrolled 
-        ? "bg-white shadow-sm" 
-        : "bg-white border-b border-gray-100"
+      scrolled ? "bg-white shadow-sm" : "bg-white border-b border-gray-100"
     )}>
-      {/* Top bar */}
       <div className={cn(
         "hidden md:block bg-navy text-white transition-all duration-200 overflow-hidden",
         scrolled ? "h-0 opacity-0" : "h-10 opacity-100"
@@ -192,20 +185,14 @@ export function Header() {
         </div>
       </div>
 
-      {/* Main navigation */}
-      <div
-        className={cn(
-          "container flex items-center justify-between transition-all duration-200 gap-4",
-          // Keep enough height when scrolled so the logo never gets clipped
-          scrolled ? "h-20 lg:h-24" : "h-20 lg:h-28",
-        )}
-      >
-        {/* Logo */}
+      <div className={cn(
+        "container flex items-center justify-between transition-all duration-200 gap-4",
+        scrolled ? "h-20 lg:h-24" : "h-20 lg:h-28",
+      )}>
         <Link to="/" className="flex items-center flex-shrink-0" aria-label="Keylink Corp">
           <KeylinkLogo className={cn("w-auto transition-[height] duration-200", scrolled ? "h-10 lg:h-16" : "h-11 lg:h-20")} />
         </Link>
 
-        {/* Desktop Navigation */}
         <NavigationMenu className="hidden lg:flex flex-1 justify-center items-center h-full">
           <NavigationMenuList className="gap-1">
             {megaMenuItems.map((item) => (
@@ -216,7 +203,6 @@ export function Header() {
                 <NavigationMenuContent>
                   <div className="w-screen max-w-5xl overflow-hidden rounded-2xl bg-white shadow-xl border border-gray-100">
                     <div className="grid grid-cols-4 gap-0">
-                      {/* Navigation Columns */}
                       <div className={cn(
                         "grid gap-6 p-8",
                         item.columns.length === 1 ? "col-span-2 grid-cols-1" : "col-span-3",
@@ -229,23 +215,9 @@ export function Header() {
                               <span className="w-1.5 h-1.5 rounded-full bg-gold"></span>
                               {column.heading}
                             </h3>
-                            <ul
-                              className={cn(
-                                "space-y-0.5",
-                                column.heading === "Company Types" &&
-                                  column.links.length > 4 &&
-                                  "grid grid-cols-2 gap-x-6 gap-y-0.5 space-y-0",
-                              )}
-                            >
-                              {column.links.map((link, idx) => (
-                                <li
-                                  key={link.title}
-                                  className={cn(
-                                    column.heading === "Company Types" &&
-                                      column.links.length > 4 &&
-                                      (idx < 3 ? "col-span-2" : "col-span-1"),
-                                  )}
-                                >
+                            <ul className="space-y-0.5">
+                              {column.links.map((link) => (
+                                <li key={link.title}>
                                   <NavigationMenuLink asChild>
                                     <Link
                                       to={link.href}
@@ -265,21 +237,17 @@ export function Header() {
                           </div>
                         ))}
                       </div>
-                      
-                      {/* CTA Panel - 2 cols for single-column menus, 1 col for others */}
+
                       <div className={cn(
                         "relative overflow-hidden bg-navy rounded-xl",
                         item.columns.length === 1 ? "col-span-2" : "col-span-1"
                       )}>
-                        {/* Subtle pattern overlay */}
                         <div className="absolute inset-0 opacity-5">
                           <div className="absolute inset-0" style={{
                             backgroundImage: 'radial-gradient(circle at 1px 1px, white 1px, transparent 0)',
                             backgroundSize: '24px 24px'
                           }}></div>
                         </div>
-                        
-                        {/* Content */}
                         <div className={cn(
                           "flex flex-col justify-between h-full relative z-10",
                           item.columns.length === 1 ? "p-8" : "p-6"
@@ -317,8 +285,7 @@ export function Header() {
                 </NavigationMenuContent>
               </NavigationMenuItem>
             ))}
-            
-            {/* About Dropdown */}
+
             <NavigationMenuItem>
               <NavigationMenuTrigger className="!bg-transparent hover:!bg-transparent data-[state=open]:!bg-transparent text-gray-600 hover:text-navy data-[state=open]:text-navy font-medium text-[15px] px-5 h-12 py-0 leading-none transition-colors duration-200 tracking-wide">
                 {aboutDropdown.title}
@@ -327,9 +294,7 @@ export function Header() {
                 <div className="w-80 p-2">
                   {aboutDropdown.sections.map((section, sectionIndex) => (
                     <div key={sectionIndex}>
-                      {sectionIndex > 0 && (
-                        <div className="my-2 border-t border-gray-100"></div>
-                      )}
+                      {sectionIndex > 0 && <div className="my-2 border-t border-gray-100"></div>}
                       <ul className="space-y-0.5">
                         {section.links.map((link) => (
                           <li key={link.title}>
@@ -343,9 +308,7 @@ export function Header() {
                                   <div className="text-sm font-medium text-gray-800 group-hover:text-navy transition-colors">
                                     {link.title}
                                   </div>
-                                  <p className="text-xs text-gray-500 mt-0.5">
-                                    {link.description}
-                                  </p>
+                                  <p className="text-xs text-gray-500 mt-0.5">{link.description}</p>
                                 </div>
                               </Link>
                             </NavigationMenuLink>
@@ -354,11 +317,9 @@ export function Header() {
                       </ul>
                     </div>
                   ))}
-                  
-                  {/* Quick contact CTA */}
                   <div className="mt-3 pt-3 border-t border-gray-100">
-                    <a 
-                      href="tel:+97317000000" 
+                    <a
+                      href="tel:+97317000000"
                       className="flex items-center gap-3 px-3 py-2.5 rounded-xl bg-navy/5 hover:bg-navy/10 transition-colors group"
                     >
                       <div className="w-8 h-8 rounded-lg bg-navy/10 flex items-center justify-center group-hover:bg-navy/20 transition-colors">
@@ -376,7 +337,6 @@ export function Header() {
           </NavigationMenuList>
         </NavigationMenu>
 
-        {/* Desktop CTA */}
         <Link to="/free-consultation" className="hidden lg:flex flex-shrink-0">
           <Button className="bg-gold hover:bg-gold-dark text-navy font-semibold px-6 h-12 rounded-xl shadow-sm">
             Free Consultation
@@ -384,7 +344,6 @@ export function Header() {
           </Button>
         </Link>
 
-        {/* Mobile menu button */}
         <button
           className="lg:hidden p-2 text-gray-700 hover:text-navy transition-colors"
           onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
@@ -394,7 +353,6 @@ export function Header() {
         </button>
       </div>
 
-      {/* Mobile Navigation */}
       {mobileMenuOpen && (
         <div className="lg:hidden border-t border-gray-100 bg-white overflow-hidden">
           <nav className="container py-4 max-h-[75vh] overflow-y-auto">
@@ -439,8 +397,7 @@ export function Header() {
                 )}
               </div>
             ))}
-            
-            {/* About Dropdown in mobile */}
+
             <div className="border-b border-gray-100">
               <button
                 className="flex w-full items-center justify-between py-4 text-left font-medium text-gray-900 hover:text-navy transition-colors"
@@ -472,8 +429,7 @@ export function Header() {
                 </div>
               )}
             </div>
-            
-            {/* Mobile CTA */}
+
             <div className="pt-6 pb-2">
               <Link to="/free-consultation" onClick={() => setMobileMenuOpen(false)}>
                 <Button className="w-full bg-gold hover:bg-gold-dark text-navy font-semibold py-6 rounded-xl shadow-md">
@@ -481,12 +437,7 @@ export function Header() {
                   <ArrowRight className="ml-2 h-4 w-4" />
                 </Button>
               </Link>
-              
-              {/* Quick contact */}
-              <a 
-                href="tel:+97317000000" 
-                className="flex items-center justify-center gap-2 mt-4 py-3 text-navy font-medium"
-              >
+              <a href="tel:+97317000000" className="flex items-center justify-center gap-2 mt-4 py-3 text-navy font-medium">
                 <Phone className="h-4 w-4" />
                 <span>+973 1700 0000</span>
               </a>
