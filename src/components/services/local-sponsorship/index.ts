@@ -1,0 +1,12 @@
+export { SponsorshipHero } from "./SponsorshipHero";
+export { SponsorshipTrustBar } from "./SponsorshipTrustBar";
+export { OwnershipRequirement } from "./OwnershipRequirement";
+export { LegalProtectionFramework } from "./LegalProtectionFramework";
+export { SponsorVettingProcess } from "./SponsorVettingProcess";
+export { SponsorshipComparison } from "./SponsorshipComparison";
+export { RestrictedActivities } from "./RestrictedActivities";
+export { SponsorshipProcess } from "./SponsorshipProcess";
+export { SponsorshipPricing } from "./SponsorshipPricing";
+export { SponsorshipGuarantee } from "./SponsorshipGuarantee";
+export { SponsorshipFAQ } from "./SponsorshipFAQ";
+export { SponsorshipCTA } from "./SponsorshipCTA";
