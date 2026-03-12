@@ -1,4 +1,3 @@
-// GitHub sync test: non-UI change (safe to keep)
 import "@testing-library/jest-dom";
 
 Object.defineProperty(window, "matchMedia", {

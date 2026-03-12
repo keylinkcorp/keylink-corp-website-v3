@@ -1,3 +1,0 @@
-GitHub sync test file created by Lovable.
-Timestamp: 2026-02-15
-If you see this in GitHub, sync is working.
