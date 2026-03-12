@@ -1,0 +1,630 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ===== Simple Navigation Utilities ===== */
+@layer utilities {
+  .glass {
+    @apply bg-white/95 backdrop-blur-xl border border-white/20;
+  }
+  
+  .glass-dark {
+    @apply bg-navy/95 backdrop-blur-xl border border-white/10;
+  }
+}
+
+/* 
+ * Keylink Corp Design System
+ * Inspired by Bizee.com - Clean, Professional, Conversion-Focused
+ * Colors: Navy (#002C4D) + Gold (#C7A763)
+ */
+
+@layer base {
+  :root {
+    /* Base backgrounds */
+    --background: 0 0% 100%;
+    --foreground: 204 100% 15%;
+
+    /* Card surfaces */
+    --card: 0 0% 100%;
+    --card-foreground: 204 100% 15%;
+
+    /* Popover/dropdown surfaces */
+    --popover: 0 0% 100%;
+    --popover-foreground: 204 100% 15%;
+
+    /* Primary: Navy Blue #002C4D */
+    --primary: 204 100% 15%;
+    --primary-foreground: 0 0% 100%;
+
+    /* Secondary: Light backgrounds */
+    --secondary: 210 20% 98%;
+    --secondary-foreground: 204 100% 15%;
+
+    /* Muted elements */
+    --muted: 210 20% 96%;
+    --muted-foreground: 204 20% 45%;
+
+    /* Accent: Gold #C7A763 */
+    --accent: 41 47% 58%;
+    --accent-foreground: 204 100% 15%;
+
+    /* Destructive */
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 100%;
+
+    /* Borders */
+    --border: 210 20% 90%;
+    --input: 210 20% 90%;
+    --ring: 41 47% 58%;
+
+    --radius: 0.75rem;
+
+    /* Custom: Navy Palette */
+    --navy: 204 100% 15%;
+    --navy-light: 204 60% 25%;
+    --navy-dark: 204 100% 10%;
+
+    /* Custom: Gold Palette */
+    --gold: 41 47% 58%;
+    --gold-light: 41 50% 70%;
+    --gold-dark: 41 55% 48%;
+
+    /* Semantic: Compliance / disclaimer surfaces (warm, high-contrast) */
+    --warning: 41 100% 92%;
+    --warning-foreground: 204 100% 15%;
+    --warning-border: 41 70% 80%;
+
+    /* Custom: Trustpilot Green (#00B67A) */
+    --trustpilot: 160 100% 36%;
+
+    /* Sidebar - using navy palette */
+    --sidebar-background: 204 100% 15%;
+    --sidebar-foreground: 0 0% 100%;
+    --sidebar-primary: 41 47% 58%;
+    --sidebar-primary-foreground: 204 100% 15%;
+    --sidebar-accent: 204 60% 25%;
+    --sidebar-accent-foreground: 0 0% 100%;
+    --sidebar-border: 204 60% 25%;
+    --sidebar-ring: 41 47% 58%;
+  }
+
+  /* Light mode only - no dark mode support */
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-background text-foreground antialiased;
+    font-feature-settings: "rlig" 1, "calt" 1;
+    font-size: 18px;
+    line-height: 1.7;
+  }
+
+  /* Bizee-inspired Typography Scale */
+  h1 {
+    @apply text-4xl md:text-5xl lg:text-6xl font-extrabold tracking-tight text-primary leading-[1.1];
+    letter-spacing: -0.02em;
+  }
+
+  h2 {
+    @apply text-3xl md:text-4xl font-bold tracking-tight text-primary leading-[1.15];
+    letter-spacing: -0.015em;
+  }
+
+  h3 {
+    @apply text-xl md:text-2xl font-semibold tracking-tight text-primary leading-[1.2];
+  }
+
+  h4 {
+    @apply text-lg md:text-xl font-semibold text-primary;
+  }
+
+  p {
+    @apply text-muted-foreground;
+  }
+
+  /* Lead paragraph styling */
+  .lead {
+    @apply text-xl md:text-2xl text-muted-foreground leading-relaxed;
+  }
+}
+
+@layer components {
+  /* Bizee-inspired Section Spacing */
+  .section-spacing {
+    @apply py-20 md:py-28 lg:py-32;
+  }
+
+  .section-spacing-sm {
+    @apply py-12 md:py-16 lg:py-20;
+  }
+
+  /* Card Styling - Larger radius and shadows */
+  .card-elevated {
+    @apply bg-card rounded-2xl shadow-[0_4px_24px_hsl(var(--navy)/0.08)] border border-border/50;
+  }
+
+  .card-elevated-hover {
+    @apply card-elevated transition-all duration-300 hover:shadow-[0_8px_32px_hsl(var(--navy)/0.12)] hover:-translate-y-1;
+  }
+
+  /* Badge styling */
+  .section-badge {
+    @apply inline-block px-4 py-1.5 rounded-full bg-gold/10 text-gold text-sm font-medium mb-4;
+  }
+
+  /* Landing page (scoped) editorial typography helpers */
+  .lp-hero-title {
+    @apply max-w-[18ch] leading-[1.03] md:leading-[1.08];
+  }
+
+  /* LP-only type scale (calmer than global h1/h2) */
+  .lp-h1 {
+    @apply text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tight text-primary leading-[1.08];
+    letter-spacing: -0.02em;
+  }
+
+  .lp-h2 {
+    @apply text-2xl sm:text-3xl md:text-[2.25rem] font-bold tracking-tight text-primary leading-[1.15];
+    letter-spacing: -0.015em;
+  }
+
+  .lp-lead {
+    @apply text-lg md:text-xl text-muted-foreground leading-relaxed;
+  }
+
+  .lp-section-subtitle {
+    @apply text-lg leading-relaxed max-w-2xl;
+  }
+
+  /* Page-scoped typography scale override (used only when wrapper class is present) */
+  .cfc-typography .section-badge {
+    @apply text-base mb-5;
+  }
+
+  .cfc-typography .lp-h2 {
+    @apply text-3xl sm:text-4xl md:text-[3rem] leading-[1.08];
+    letter-spacing: -0.02em;
+  }
+
+  .cfc-typography .lp-section-subtitle {
+    @apply text-xl leading-relaxed;
+  }
+
+  .cfc-typography .lp-card p,
+  .cfc-typography .lp-card .text-sm,
+  .cfc-typography .lp-card-flat .text-sm,
+  .cfc-typography .lp-card-flat p {
+    @apply text-base leading-relaxed;
+  }
+
+  .cfc-typography .step-number {
+    @apply w-14 h-14 text-xl;
+  }
+
+  /* LP-only surfaces (minimal premium: calmer borders + subtle hover lift) */
+  .lp-card {
+    @apply bg-card rounded-2xl border border-border/40 shadow-[0_1px_0_hsl(var(--foreground)/0.04)] transition-shadow;
+  }
+
+  .lp-card-flat {
+    @apply bg-card rounded-2xl border border-border/40 shadow-none;
+  }
+
+  .lp-hover-lift {
+    @apply transition-all duration-300 hover:-translate-y-0.5 hover:shadow-[0_10px_34px_hsl(var(--navy)/0.10)];
+  }
+
+  /* Landing CTAs: consistent pill shape + height (primary CTA = Start calculator) */
+  .lp-cta {
+    @apply rounded-full h-12 px-8 text-sm font-semibold;
+  }
+
+  .lp-cta-outline {
+    @apply rounded-full h-12 px-8 text-sm font-semibold;
+  }
+
+  /* CTA Button Styles */
+  .btn-gold {
+    @apply inline-flex items-center justify-center gap-2 px-8 py-4 bg-gold hover:bg-gold-dark text-primary font-semibold rounded-xl transition-all duration-200 hover:scale-[1.02] shadow-lg shadow-gold/20;
+  }
+
+  .btn-outline-primary {
+    @apply inline-flex items-center justify-center gap-2 px-8 py-4 border-2 border-primary text-primary font-semibold rounded-xl hover:bg-primary hover:text-primary-foreground transition-all duration-200;
+  }
+
+  /* Step number styling */
+  .step-number {
+    @apply w-16 h-16 rounded-full bg-gold/10 text-gold font-bold text-2xl flex items-center justify-center;
+  }
+
+  .step-number-filled {
+    @apply w-16 h-16 rounded-full bg-gold text-primary font-bold text-2xl flex items-center justify-center;
+  }
+
+  /* Link with arrow animation */
+  .link-arrow {
+    @apply inline-flex items-center gap-1 text-gold font-medium transition-all duration-200;
+  }
+
+  .link-arrow:hover {
+    @apply gap-2;
+  }
+
+  .link-arrow svg {
+    @apply transition-transform duration-200;
+  }
+
+  .link-arrow:hover svg {
+    @apply translate-x-1;
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+
+  /* Gradient backgrounds */
+  .gradient-navy {
+    background: linear-gradient(135deg, hsl(var(--navy)) 0%, hsl(var(--navy-dark)) 100%);
+  }
+
+  .gradient-gold {
+    background: linear-gradient(135deg, hsl(var(--gold-light)) 0%, hsl(var(--gold)) 100%);
+  }
+
+  .gradient-navy-radial {
+    background: radial-gradient(
+      ellipse at top right,
+      hsl(var(--navy-light)) 0%,
+      hsl(var(--navy)) 50%,
+      hsl(var(--navy-dark)) 100%
+    );
+  }
+
+  /* Pattern overlays */
+  .pattern-dots {
+    background-image: radial-gradient(circle, hsl(var(--gold) / 0.15) 1px, transparent 1px);
+    background-size: 24px 24px;
+  }
+
+  .pattern-grid {
+    background-image:
+      linear-gradient(to right, hsl(var(--border) / 0.5) 1px, transparent 1px),
+      linear-gradient(to bottom, hsl(var(--border) / 0.5) 1px, transparent 1px);
+    background-size: 40px 40px;
+  }
+
+  /* Animation utilities */
+  .animate-fade-in-up {
+    animation: fadeInUp 0.6s ease-out forwards;
+  }
+
+  @keyframes fadeInUp {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  .stagger-1 {
+    animation-delay: 100ms;
+  }
+  .stagger-2 {
+    animation-delay: 200ms;
+  }
+  .stagger-3 {
+    animation-delay: 300ms;
+  }
+  .stagger-4 {
+    animation-delay: 400ms;
+  }
+
+  /* ===== Glassmorphism Effects ===== */
+  .glass-card {
+    @apply relative bg-white/10 backdrop-blur-xl rounded-2xl border border-white/20 overflow-hidden;
+  }
+
+  .glass-card-dark {
+    @apply relative backdrop-blur-xl rounded-2xl overflow-hidden;
+    background: hsl(var(--navy) / 0.7);
+    border: 1px solid hsl(var(--gold) / 0.2);
+  }
+
+  .glass-card-light {
+    @apply relative backdrop-blur-xl rounded-2xl overflow-hidden;
+    background: hsl(var(--background) / 0.9);
+    border: 1px solid hsl(var(--navy) / 0.1);
+  }
+
+  /* LP-specific glass card (for benefit tiles over photo backgrounds) */
+  .lp-glass-card {
+    @apply relative rounded-2xl overflow-hidden backdrop-blur-xl;
+    background: hsl(var(--background) / 0.08);
+    border: 1px solid hsl(var(--background) / 0.18);
+    box-shadow: 0 18px 50px hsl(var(--navy) / 0.22);
+  }
+
+  .lp-glass-card::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background: linear-gradient(
+      135deg,
+      hsl(var(--background) / 0.18) 0%,
+      transparent 55%,
+      hsl(var(--gold) / 0.10) 100%
+    );
+  }
+
+  /* ===== Overlay Gradients ===== */
+  .overlay-navy-gradient {
+    background: linear-gradient(
+      135deg,
+      hsl(var(--navy) / 0.95) 0%,
+      hsl(var(--navy) / 0.7) 50%,
+      hsl(var(--navy) / 0.4) 100%
+    );
+  }
+
+  .overlay-navy-vertical {
+    background: linear-gradient(
+      to bottom,
+      hsl(var(--navy) / 0.9) 0%,
+      hsl(var(--navy) / 0.6) 40%,
+      hsl(var(--navy) / 0.28) 100%
+    );
+  }
+
+  .overlay-gold-accent {
+    background: linear-gradient(135deg, hsl(var(--gold) / 0.15) 0%, transparent 60%);
+  }
+
+  /* ===== Floating Decorative Shapes ===== */
+  .floating-orb {
+    @apply absolute rounded-full pointer-events-none;
+    filter: blur(80px);
+  }
+
+  .floating-orb-gold {
+    background: radial-gradient(circle, hsl(var(--gold) / 0.4) 0%, transparent 70%);
+  }
+
+  .floating-orb-navy {
+    background: radial-gradient(circle, hsl(var(--navy-light) / 0.3) 0%, transparent 70%);
+  }
+
+  @keyframes float {
+    0%,
+    100% {
+      transform: translateY(0px) scale(1);
+    }
+    50% {
+      transform: translateY(-20px) scale(1.05);
+    }
+  }
+
+  @keyframes float-subtle {
+    0%,
+    100% {
+      transform: translateY(0px);
+    }
+    50% {
+      transform: translateY(-10px);
+    }
+  }
+
+  @keyframes pulse-glow {
+    0%,
+    100% {
+      opacity: 0.4;
+    }
+    50% {
+      opacity: 0.7;
+    }
+  }
+
+  .animate-float {
+    animation: float 6s ease-in-out infinite;
+  }
+
+  .animate-float-slow {
+    animation: float 8s ease-in-out infinite;
+  }
+
+  .animate-float-subtle {
+    animation: float-subtle 3s ease-in-out infinite;
+  }
+
+  .animate-pulse-glow {
+    animation: pulse-glow 4s ease-in-out infinite;
+  }
+
+  /* ===== Mesh Gradient Utilities ===== */
+  .mesh-gradient-gold {
+    background-image:
+      radial-gradient(ellipse 80% 60% at 70% 10%, hsl(var(--gold) / 0.18) 0%, transparent 50%),
+      radial-gradient(ellipse 60% 50% at 10% 60%, hsl(var(--gold) / 0.12) 0%, transparent 50%),
+      radial-gradient(ellipse 50% 40% at 90% 80%, hsl(var(--navy) / 0.08) 0%, transparent 50%);
+  }
+
+  /* ===== Noise Texture ===== */
+  .noise-texture {
+    position: relative;
+  }
+
+  .noise-texture::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    opacity: 0.015;
+    pointer-events: none;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+  }
+
+  /* ===== Hexagon Icon Container ===== */
+  .hexagon-container {
+    @apply relative;
+    clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+  }
+
+  /* ===== Shimmer Effect ===== */
+  @keyframes shimmer {
+    0% {
+      transform: translateX(-100%);
+    }
+    100% {
+      transform: translateX(100%);
+    }
+  }
+
+  .shimmer {
+    @apply absolute inset-0 overflow-hidden;
+  }
+
+  .shimmer::after {
+    content: "";
+    @apply absolute inset-0;
+    background: linear-gradient(90deg, transparent, hsl(var(--background) / 0.1), transparent);
+    animation: shimmer 3s infinite;
+  }
+
+  /* ===== Card Glow Effect ===== */
+  .card-glow {
+    @apply relative;
+  }
+
+  .card-glow::before {
+    content: "";
+    @apply absolute -inset-0.5 rounded-2xl opacity-0 transition-opacity duration-300;
+    background: linear-gradient(135deg, hsl(var(--gold) / 0.3), hsl(var(--gold) / 0.1));
+    z-index: -1;
+  }
+
+  .card-glow:hover::before {
+    @apply opacity-100;
+  }
+
+  /* ===== Enhanced Background Overlays ===== */
+  .overlay-gold-radial {
+    background: radial-gradient(ellipse 80% 60% at 50% 0%, hsl(var(--gold) / 0.12) 0%, transparent 60%);
+  }
+
+  .overlay-gold-radial-center {
+    background: radial-gradient(
+      ellipse 60% 50% at 50% 50%,
+      hsl(var(--gold) / 0.08) 0%,
+      transparent 70%
+    );
+  }
+
+  /* ===== Gradient Sweep Animation ===== */
+  @keyframes gradient-sweep {
+    0% {
+      background-position: 0% 50%;
+    }
+    50% {
+      background-position: 100% 50%;
+    }
+    100% {
+      background-position: 0% 50%;
+    }
+  }
+
+  .animate-gradient-sweep {
+    background: linear-gradient(
+      90deg,
+      transparent 0%,
+      hsl(var(--gold) / 0.08) 25%,
+      hsl(var(--gold) / 0.15) 50%,
+      hsl(var(--gold) / 0.08) 75%,
+      transparent 100%
+    );
+    background-size: 200% 100%;
+    animation: gradient-sweep 8s ease infinite;
+  }
+
+  /* ===== Grid Lines Pattern ===== */
+  .pattern-grid-lines {
+    background-image:
+      linear-gradient(to right, hsl(var(--background) / 0.05) 1px, transparent 1px),
+      linear-gradient(to bottom, hsl(var(--background) / 0.05) 1px, transparent 1px);
+    background-size: 6rem 4rem;
+  }
+
+  .pattern-grid-lines-light {
+    background-image:
+      linear-gradient(to right, hsl(var(--navy) / 0.04) 1px, transparent 1px),
+      linear-gradient(to bottom, hsl(var(--navy) / 0.04) 1px, transparent 1px);
+    background-size: 6rem 4rem;
+  }
+
+  /* ===== Ibelick-inspired Section Overlays ===== */
+  .overlay-ibelick-soft {
+    background-image:
+      radial-gradient(ellipse 70% 55% at 15% 20%, hsl(var(--gold) / 0.18) 0%, transparent 58%),
+      radial-gradient(ellipse 65% 55% at 85% 35%, hsl(var(--navy) / 0.14) 0%, transparent 62%),
+      radial-gradient(ellipse 70% 55% at 55% 100%, hsl(var(--gold) / 0.12) 0%, transparent 58%),
+      /* ultra-subtle lines so it reads on white even when gradients are gentle */
+      linear-gradient(to right, hsl(var(--navy) / 0.03) 1px, transparent 1px),
+      linear-gradient(to bottom, hsl(var(--navy) / 0.03) 1px, transparent 1px),
+      linear-gradient(to bottom, hsl(var(--background) / 1) 0%, hsl(var(--background) / 0.985) 100%);
+    background-size: auto, auto, auto, 8.5rem 5.25rem, 8.5rem 5.25rem, auto;
+  }
+
+  .overlay-ibelick-lines {
+    background-image:
+      radial-gradient(ellipse 80% 60% at 25% 25%, hsl(var(--gold) / 0.14) 0%, transparent 60%),
+      radial-gradient(ellipse 70% 55% at 85% 70%, hsl(var(--navy) / 0.12) 0%, transparent 64%),
+      linear-gradient(to right, hsl(var(--navy) / 0.04) 1px, transparent 1px),
+      linear-gradient(to bottom, hsl(var(--navy) / 0.04) 1px, transparent 1px);
+    background-size: auto, auto, 7rem 4.5rem, 7rem 4.5rem;
+  }
+
+  /* ===== Enhanced Floating Orb Animations ===== */
+  @keyframes float-pulse {
+    0%,
+    100% {
+      transform: translateY(0px) scale(1);
+      opacity: 0.3;
+    }
+    50% {
+      transform: translateY(-20px) scale(1.1);
+      opacity: 0.5;
+    }
+  }
+
+  .animate-float-pulse {
+    animation: float-pulse 6s ease-in-out infinite;
+  }
+
+  /* ===== Timeline Glow Effect ===== */
+  .timeline-marker-glow {
+    @apply relative;
+    box-shadow: 0 0 20px hsl(var(--gold) / 0.4);
+  }
+
+  /* ===== Hover Zoom with Glow ===== */
+  .hover-zoom-glow {
+    @apply transition-all duration-500;
+  }
+
+  .hover-zoom-glow:hover {
+    transform: scale(1.02);
+    box-shadow: 0 20px 40px hsl(var(--navy) / 0.15), 0 0 0 2px hsl(var(--gold) / 0.3);
+  }
+}

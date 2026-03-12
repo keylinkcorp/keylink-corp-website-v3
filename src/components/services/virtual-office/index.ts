@@ -1,0 +1,12 @@
+export { VirtualOfficeHero } from "./VirtualOfficeHero";
+export { VirtualOfficeExplainer } from "./VirtualOfficeExplainer";
+export { VirtualOfficePackages } from "./VirtualOfficePackages";
+export { VirtualOfficeFeatures } from "./VirtualOfficeFeatures";
+export { VirtualOfficeComparison } from "./VirtualOfficeComparison";
+export { VirtualOfficeWhyChoose } from "./VirtualOfficeWhyChoose";
+export { VirtualOfficePricing } from "./VirtualOfficePricing";
+export { VirtualOfficeTestimonials } from "./VirtualOfficeTestimonials";
+export { VirtualOfficeBenefits } from "./VirtualOfficeBenefits";
+export { VirtualOfficeContact } from "./VirtualOfficeContact";
+export { VirtualOfficeLocation } from "./VirtualOfficeLocation";
+export { VirtualOfficeLogos } from "./VirtualOfficeLogos";
