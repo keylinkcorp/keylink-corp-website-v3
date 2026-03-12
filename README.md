@@ -1,5 +1,7 @@
 # Welcome to your Lovable project
 
+<!-- Test comment: GitHub sync verified ✅ -->
+
 ## Project info
 
 **URL**: https://lovable.dev/projects/REPLACE_WITH_PROJECT_ID
