@@ -40,7 +40,7 @@ export function Footer() {
         <div className="container py-12 text-center">
           <h2 className="text-3xl font-bold mb-4">Ready to Start Your Business in Bahrain?</h2>
           <p className="text-lg text-primary-foreground/80 mb-6 max-w-2xl mx-auto">
-            Get expert guidance and support for all your business setup needs. Our team is ready to help you succeed.
+            Get expert guidances and support for all your business setup needs. Our team is ready to help you succeed.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link
